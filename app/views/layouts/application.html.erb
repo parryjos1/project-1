@@ -10,6 +10,23 @@
   </head>
 
   <body>
+
+    <h1>Stock Brokerage Firm</h1>
+
+    <nav>
+  <% if @current_user.present? %>
+      Welcome, <%= @current_user.name %>!
+      <%= link_to 'Logout', login_path, method: 'delete' %>
+    <% else %>
+      <%= link_to 'Login', login_path %>
+    <% end %>
+  </nav>
+  <hr>
+
     <%= yield %>
+
+    <br>
+    <hr>
+    <footer>&copy Stock Breaker Company</footer>
   </body>
 </html>

@@ -1,0 +1,20 @@
+
+<h2>Create new portfolio</h2>
+
+<% if flash[:errors].present? -%>
+  <strong>Please correct the following errors: </strong>
+  <ol>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ol>
+<% end %>
+
+<%= form_for @portfolio do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+
+  <%= f.submit %>
+<% end %>

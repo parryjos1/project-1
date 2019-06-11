@@ -1,0 +1,18 @@
+
+<h3>
+  <%= link_to "Your Portfolios", user_path %>
+</h3>
+
+
+
+<h2><%= "#{@stock.name} Stock Information" %></h2>
+
+
+<strong>Name:</strong> <%= @stock.name %>
+<br>
+<strong>Ticker</strong>: <%= @stock.ticker %>
+<br>
+<strong>Price</strong>: <%= @stock.price %>
+<br>
+<strong>Description</strong>: <%= @stock.description %>
+<br>

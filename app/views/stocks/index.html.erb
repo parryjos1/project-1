@@ -1,0 +1,19 @@
+
+<h3>
+<%= link_to "All Portfolios", portfolios_path %>
+</h3>
+
+
+<h2>All Stocks</h2>
+
+
+
+<ul>
+<% @stocks.each do |stock| %>
+
+<li>
+  <%= link_to "#{stock.name}, #{stock.ticker}, #{stock.price}, #{stock.description}", stock_path(stock.id)%>
+</li>
+
+<% end %>
+</ul>

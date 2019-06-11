@@ -1,0 +1,17 @@
+<h3>
+  <%= link_to "Your Portfolios", user_path %>
+  |
+  <%= link_to "Add a stock to Portfolio", user_path %>
+</h3>
+
+<h2> <%= "#{@portfolio.title} Information" %></h2>
+
+<h3>Stocks Held</h3>
+<ul>
+<% @portfolio.stocks.each do |stock| %>
+  <li>
+  <%= link_to "#{stock.name}", stock_path(stock.id) %>
+  </li>
+
+<% end %>
+</ul>
