@@ -1,0 +1,20 @@
+<h2>Share Information
+  |
+  <%= link_to "Add to your Portfolio", share_add_path(params[:id],  @symbol, company_name: @company) %>
+</h2>
+
+
+Company: <%= @company %>
+<br>
+Symbol: <%= @symbol %>
+<br>
+Last Price: $<%= @price %>
+<br>
+Market Cap:<%= number_to_currency(@market_cap) %>
+<br>
+52 Week High: $<%= @year_high %>
+<br>
+52 Week Low: $<%= @year_low %>
+<br>
+YTD Change(%): <%= @ytd_change %>
+<br>

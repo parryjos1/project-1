@@ -1,7 +1,10 @@
 <h3>
-  <%= link_to "Your Portfolios", user_path %>
-  |
-  <%= link_to "Add a stock to Portfolio", user_path %>
+  <%= form_tag shares_search_path(@portfolio.id) do %>
+    <%= link_to "Your Portfolios", user_path %>
+    |
+    Add a stock: <input type="text" name="stock_code" placeholder="Symbol">
+    <input type="submit" value="Search">
+  <% end %>
 </h3>
 
 <h2> <%= "#{@portfolio.title} Information" %></h2>

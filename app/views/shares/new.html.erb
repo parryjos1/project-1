@@ -1,0 +1,19 @@
+<h2>Add a share to your portfolio</h2>
+
+<% if flash[:errors].present? -%>
+  <strong>Please correct the following errors: </strong>
+  <ol>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ol>
+<% end %>
+
+<%= form_for @share do |f| %>
+
+  <%= f.label :ticker %>
+  <%= f.text_field :ticker %>
+  <br>
+
+  <%= f.submit %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_064345) do
+ActiveRecord::Schema.define(version: 2019_06_11_001935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,23 @@ ActiveRecord::Schema.define(version: 2019_06_10_064345) do
     t.integer "user_id"
   end
 
+  create_table "portfolios_shares", force: :cascade do |t|
+    t.integer "portfolio_id"
+    t.integer "share_id"
+  end
+
   create_table "portfolios_stocks", force: :cascade do |t|
     t.integer "portfolio_id"
     t.integer "stock_id"
+  end
+
+  create_table "shares", force: :cascade do |t|
+    t.text "name"
+    t.text "ticker"
+    t.integer "price"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stocks", force: :cascade do |t|
