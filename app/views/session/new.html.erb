@@ -1,4 +1,6 @@
 
+<%= link_to "Sign up", new_user_path %>
+
 <h2>Login</h2>
 
 <% if flash[:error] %>
@@ -6,6 +8,7 @@
   <strong><%= flash[:error] %></strong>
   <br>
 <% end %>
+
 
 <%= form_tag login_path do -%>
 

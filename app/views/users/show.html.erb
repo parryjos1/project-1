@@ -1,6 +1,20 @@
-<h3>Create New Portfolio</h3>
 
+
+
+<%= form_tag user_balance_path(@current_user.id, operator: '+') do %>
+  Deposit Funds: <input type="text" name="deposit" placeholder="Amount">
+  <input type="submit" value="Deposit">
+<% end %>
+
+<%= form_tag user_balance_path(@current_user.id, operator: '-') do %>
+  Withdraw Funds: <input type="text" name="withdraw" placeholder="Amount">
+  <input type="submit" value="Withdraw">
+<% end %>
+
+
+<h3>Create New Portfolio</h3>
 <%= link_to "Create New Portfolio", new_portfolio_path %>
+
 
 <h2><%= "#{@current_user.name}'s Portfolio" %></h2>
 

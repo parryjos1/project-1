@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   # Add the searched share to the portfolio (from the results page)
   get  "/portfolios/:id/shares/:ticker/add" => "shares#create", as: 'share_add'
 
+  # Updating the balance
+  # get "/users/:id/balance/operation"
+  post "/users/:id/balance" => "users#balance", as: 'user_balance'
+
+
   resources :portfolios do
     resources :shares
   end

@@ -23,6 +23,13 @@
   </nav>
   <hr>
 
+  <h3>
+    <% if @current_user.present? %>
+      Cash Balance: <%= number_to_currency(@current_user.funds) %>
+    <% end %>
+  </h3>
+
+
     <%= yield %>
 
     <br>

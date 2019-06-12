@@ -24,6 +24,19 @@ class UsersController < ApplicationController
 
   end
 
+  def balance
+  if params[:operator] == '+'
+    funds = User.find params[:id]
+    funds.funds += params[:deposit].to_i
+  else
+    funds = User.find params[:id]
+    funds.funds -= params[:withdraw].to_i
+  end
+  funds.save()
+
+  redirect_to user_path(params[:id])
+  end
+
   def edit
   end
 
