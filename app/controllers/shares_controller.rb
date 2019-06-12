@@ -45,6 +45,10 @@ class SharesController < ApplicationController
   end
 
   def destroy
+    share = Share.find_by(ticker: params[:id])
+    portfolio = Portfolio.find(params[:portfolio_id])
+    portfolio.shares.delete(share)
+    redirect_to portfolio_path(params[:portfolio_id])
   end
 
 
