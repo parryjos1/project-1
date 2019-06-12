@@ -60,3 +60,7 @@ gem 'jquery-rails'
 gem 'httparty'
 
 gem 'stock_quote'
+
+group :production do
+  gem 'rails_12factor'
+end
