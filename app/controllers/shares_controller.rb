@@ -4,7 +4,7 @@ class SharesController < ApplicationController
   end
 
   def search
-    stock = StockQuote::Stock.quote(params[:stock_code])
+    stock = StockQuote::Stock.quote(params[:symbol])
     puts "The Stock is #{stock}"
     @price = stock.latest_price
     @company = stock.company_name
@@ -25,7 +25,7 @@ class SharesController < ApplicationController
 
   def create
     share = Share.create(
-      name: params[:company_name],
+      name: params[:symbol],
       ticker: params[:ticker]
     )
     p = Portfolio.find(params[:id])
@@ -35,6 +35,7 @@ class SharesController < ApplicationController
   end
 
   def show
+
   end
 
   def edit

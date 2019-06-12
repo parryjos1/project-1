@@ -1,6 +1,8 @@
 <h2>Share Information
   |
-  <%= link_to "Add to your Portfolio", share_add_path(params[:id],  @symbol, company_name: @company) %>
+  <%= link_to "BUY", share_add_path(params[:id],  @symbol, symbol: @company) %>
+  |
+  <%= link_to "SELL", method: :delete, portfolio_share_path %>
 </h2>
 
 

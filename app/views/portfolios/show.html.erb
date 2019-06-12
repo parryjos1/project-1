@@ -2,18 +2,18 @@
   <%= form_tag shares_search_path(@portfolio.id) do %>
     <%= link_to "Your Portfolios", user_path %>
     |
-    Add a stock: <input type="text" name="stock_code" placeholder="Symbol">
+    Add a stock: <input type="text" name="symbol" placeholder="Symbol">
     <input type="submit" value="Search">
   <% end %>
 </h3>
 
 <h2> <%= "#{@portfolio.title} Information" %></h2>
 
-<h3>Stocks Held</h3>
+<h3>Shares Held</h3>
 <ul>
-<% @portfolio.stocks.each do |stock| %>
+<% @portfolio.shares.each do |share| %>
   <li>
-  <%= link_to "#{stock.name}", stock_path(stock.id) %>
+    <%= link_to "#{share.ticker} - #{share.name}", shares_search_path(@portfolio.id, symbol: share.ticker), method: 'post'   %>
   </li>
 
 <% end %>
