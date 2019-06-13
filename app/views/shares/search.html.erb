@@ -3,31 +3,47 @@
   BUY <input type="text" name="buy" placeholder="Amount">
   <input type="submit" value="Buy">
 <% end %>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+
 <br>
 </h3>
 
-<!-- This is broken, need to remake and send build logic with Quantity -->
-<h2>Share Information
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<h3>
   <% if @stock_in_portfolio_id.present? %>
-    <%= link_to "SELL", portfolio_share_path(params[:id], @stock_in_portfolio_id), method: :delete  %>
+    <%= form_tag portfolio_share_path(params[:id], @stock_in_portfolio_id), method: :delete do %>
+      SELL <input type="text" name="sell" placeholder="Amount">
+      <input type="submit" value="Sell">
+    <% end %>
   <% end %>
-</h2>
+<br>
+</h3>
 
 
+<h2>Share Information</h2>
+
+<%= image_tag(@logo.url) %>
+<br>
+<br>
 Company: <%= @company %>
+<br>
 <br>
 Symbol: <%= @symbol %>
 <br>
+<br>
 Last Price: $<%= @price %>
+<br>
 <br>
 Market Cap:<%= number_to_currency(@market_cap) %>
 <br>
+<br>
 52 Week High: $<%= @year_high %>
 <br>
+<br>
 52 Week Low: $<%= @year_low %>
+<br>
 <br>
 YTD Change(%): <%= @ytd_change %>
 <br>

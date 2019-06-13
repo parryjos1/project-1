@@ -13,6 +13,9 @@ class SharesController < ApplicationController
     @year_high = stock.week52_high
     @year_low = stock.week52_low
     @ytd_change = "#{(stock.ytd_change*100).round(2)}%"
+    @logo = StockQuote::Stock.logo(params[:symbol])
+    
+    # @chart  = StockQuote::Stock.chart(params[:symbol], '5y')
     # @profit = stock.grossProfit
     # @peers = stock.peers
     # @logo = stock.logo
@@ -60,11 +63,36 @@ class SharesController < ApplicationController
   end
 
   def destroy
-
     share = Share.find params[:id]
     portfolio = Portfolio.find(params[:portfolio_id])
-    portfolio.shares.delete(share)
-    redirect_to portfolio_path(params[:portfolio_id])
+    owned_qty = share.quantity
+    sell_qty = params[:sell].to_i
+
+    if (owned_qty - sell_qty) == 0
+      # Selling down all holdings, delete from the database
+      portfolio.shares.delete(share)
+      redirect_to portfolio_path(params[:portfolio_id])
+
+      #Logic to add funds
+      @current_user.funds += (sell_qty * share.price)
+      @current_user.save()
+    elsif (owned_qty - sell_qty) > 0
+      # Partial sell down of portfolio
+      share.quantity -= sell_qty
+      share.save()
+
+      #logic to add funds to account
+      @current_user.funds += (sell_qty * share.price)
+      @current_user.save()
+      redirect_to portfolio_path(params[:portfolio_id])
+    else
+      #Error you do not have enough units
+      flash[:notice] = "You don't have enough of this stock"
+      # raise 'hell'
+      redirect_to shares_search_path(params[:portfolio_id], symbol: share.ticker), method: 'get'
+    end
+
+
   end
 
 
