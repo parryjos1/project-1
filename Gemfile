@@ -64,3 +64,5 @@ gem 'stock_quote'
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'chart-js-rails'

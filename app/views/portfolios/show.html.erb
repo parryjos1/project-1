@@ -21,7 +21,5 @@
   <li>
     <%= link_to "#{share.ticker} --- #{share.name} --- Quantity:#{share.quantity} --- total value: #{number_to_currency(share.price * share.quantity)}", shares_search_path(@portfolio.id, symbol: share.ticker), method: 'get'   %>
   </li>
-
-
 <% end %>
 </ul>

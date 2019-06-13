@@ -14,13 +14,24 @@ class SharesController < ApplicationController
     @year_low = stock.week52_low
     @ytd_change = "#{(stock.ytd_change*100).round(2)}%"
     @logo = StockQuote::Stock.logo(params[:symbol])
-    
+
+    #Chart data from API
+    @chart = StockQuote::Stock.chart(params[:symbol], '1y')
+
+    #Obtaining array of 12 month prices and dates for chart
+    @list_of_prices = []
+    @list_of_dates = []
+    @chart.chart.each do |price|
+      @list_of_prices << price["close"]
+      @list_of_dates << price["label"]
+    end
+
+    @list_of_prices = @list_of_prices.to_json
+    @list_of_dates = @list_of_dates.to_json
+
     # @chart  = StockQuote::Stock.chart(params[:symbol], '5y')
     # @profit = stock.grossProfit
     # @peers = stock.peers
-    # @logo = stock.logo
-    # @chart = stock.chart
-    # share = Share.find_by(ticker: @symbol)
     current_portfolio = Portfolio.find params[:id]
     @stock_in_portfolio_id = current_portfolio.shares.find_by(ticker: params[:symbol])
   end

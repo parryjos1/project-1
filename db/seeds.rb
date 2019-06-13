@@ -37,7 +37,7 @@ p4.shares << s7 << s4
 
 User.destroy_all
 
-u1 = User.create name: 'Darren Hill', email: 'dh@gmail.com', password: 'chicken', funds: 238654793
+u1 = User.create name: 'Darren Hill', email: 'dh@gmail.com', password: 'chicken', funds: 173450
 u2 = User.create name: 'Gregory McIntosh', email: 'gm@gmail.com', password: 'chicken', funds: 66879
 u3 = User.create name: 'Rafiki', email: 'raf@gmail.com', password: 'chicken', funds: 1000000
 
