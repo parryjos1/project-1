@@ -1,6 +1,10 @@
 
+ <h3>Net worth: <%= number_to_currency(@current_user.funds + @portfolio_val) %></h3>
+
+<h3>Portfolio Valuation: <%= number_to_currency(@portfolio_val) %></h3>
+
 <h3>
-  <%= form_tag shares_search_path(@portfolio.id) do %>
+  <%= form_tag shares_search_path(@portfolio.id), method: 'get' do %>
     <%= link_to "Your Portfolios", user_path %>
     |
     Add a stock: <input type="text" name="symbol" placeholder="Symbol">
@@ -8,14 +12,16 @@
   <% end %>
 </h3>
 
+
 <h2> <%= "#{@portfolio.title} Information" %></h2>
 
 <h3>Shares Held</h3>
 <ul>
 <% @portfolio.shares.each do |share| %>
   <li>
-    <%= link_to "#{share.ticker} - #{share.name}", shares_search_path(@portfolio.id, symbol: share.ticker), method: 'post'   %>
+    <%= link_to "#{share.ticker} --- #{share.name} --- Quantity:#{share.quantity} --- total value: #{number_to_currency(share.price * share.quantity)}", shares_search_path(@portfolio.id, symbol: share.ticker), method: 'get'   %>
   </li>
+
 
 <% end %>
 </ul>

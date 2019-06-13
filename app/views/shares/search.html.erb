@@ -1,8 +1,19 @@
+<h3>
+<%= form_tag share_add_path(params[:id],  @symbol, symbol: @company, price: @price) do %>
+  BUY <input type="text" name="buy" placeholder="Amount">
+  <input type="submit" value="Buy">
+<% end %>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
+</h3>
+
+<!-- This is broken, need to remake and send build logic with Quantity -->
 <h2>Share Information
-  |
-  <%= link_to "BUY", share_add_path(params[:id],  @symbol, symbol: @company) %>
-  |
-  <%= link_to "SELL", portfolio_share_path(params[:id], params[:symbol]), method: :delete  %>
+  <% if @stock_in_portfolio_id.present? %>
+    <%= link_to "SELL", portfolio_share_path(params[:id], @stock_in_portfolio_id), method: :delete  %>
+  <% end %>
 </h2>
 
 

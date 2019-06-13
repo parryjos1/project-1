@@ -23,6 +23,13 @@ class PortfoliosController < ApplicationController
 
   def show
     @portfolio = Portfolio.find params[:id]
+    @portfolio_val = 0
+
+    @portfolio.shares.each do |share|
+    @portfolio_val += (share.price * share.quantity)
+
+    end
+
   end
 
   def edit

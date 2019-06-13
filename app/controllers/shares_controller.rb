@@ -17,6 +17,9 @@ class SharesController < ApplicationController
     # @peers = stock.peers
     # @logo = stock.logo
     # @chart = stock.chart
+    # share = Share.find_by(ticker: @symbol)
+    current_portfolio = Portfolio.find params[:id]
+    @stock_in_portfolio_id = current_portfolio.shares.find_by(ticker: params[:symbol])
   end
 
   def new
@@ -24,18 +27,30 @@ class SharesController < ApplicationController
   end
 
   def create
-    share = Share.create(
-      name: params[:symbol],
-      ticker: params[:ticker]
-    )
-    p = Portfolio.find(params[:id])
-    p.shares << share
+    # raise 'hell'
+    if (params[:buy].to_i * params[:price].to_i) < @current_user.funds
+      share = Share.create(
+        name: params[:symbol],
+        ticker: params[:ticker],
+        quantity: params[:buy].to_i,
+        price: params[:price].to_i
+      )
+      p = Portfolio.find(params[:id])
+      p.shares << share
 
-    redirect_to portfolio_path(params[:id])
+      @current_user.funds -= (params[:buy].to_i * params[:price].to_i)
+      @current_user.save()
+
+      redirect_to portfolio_path(params[:id])
+    else
+      flash[:notice] = "Insufficient Funds"
+      redirect_to shares_search_path(params[:id], symbol: params[:ticker]), method: 'get'
+
+    end
+
   end
 
   def show
-
   end
 
   def edit
@@ -45,7 +60,8 @@ class SharesController < ApplicationController
   end
 
   def destroy
-    share = Share.find_by(ticker: params[:id])
+
+    share = Share.find params[:id]
     portfolio = Portfolio.find(params[:portfolio_id])
     portfolio.shares.delete(share)
     redirect_to portfolio_path(params[:portfolio_id])
