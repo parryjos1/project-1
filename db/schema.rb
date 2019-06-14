@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_113324) do
+ActiveRecord::Schema.define(version: 2019_06_13_130655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bitcoins", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bitcoins_users", force: :cascade do |t|
+    t.integer "bitcoin_id"
+    t.integer "user_id"
+  end
 
   create_table "portfolios", force: :cascade do |t|
     t.text "title"

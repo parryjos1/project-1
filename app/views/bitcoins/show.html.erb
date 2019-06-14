@@ -1,0 +1,47 @@
+<h3>
+<%= link_to "Back to Dashboard", user_path %>
+</h3>
+
+<hr>
+<h2>This is the bitcoins page</h2>
+
+<h3>
+  Current Price of Bitcoin ($USD):   <%= number_to_currency(@current_bitcoin_price) %>
+</h3>
+
+
+<h3>
+<%= form_tag bitcoins_create_path(params[:id], pricebcoin: @current_bitcoin_price) do %>
+  BUY <input type="text" name="buy" placeholder="Amount">
+  <input type="submit" value="Buy">
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
+</h3>
+
+<!--  Sell Bitcoins-->
+<h3>
+  <% if @user_bitcoin_qty.present? %>
+    <%= @user_id_sell = params[:id] %>
+    <%= form_tag bitcoins_delete_path(@user_id_sell, @bitcoin_id) do %>
+      SELL <input type="text" name="sell" placeholder="Amount">
+      <input type="submit" value="Sell">
+    <% end %>
+  <% end %>
+<br>
+</h3>
+
+<h1>Amount of bitcoins: <%= @user_bitcoin_qty %></h1>
+
+<h2>
+
+  <% if @user_bitcoin_qty.present? %>
+    Bitcoin return (%):
+    <%= @bitcoin_return %>
+
+  <% end %>
+<br>
+</h2>

@@ -1,4 +1,7 @@
 <h3>
+<%= link_to "Back to Dashboard", user_path %>
+</h3>
+<h3>
 <%= form_tag share_add_path(params[:id],  @symbol, symbol: @company, price: @price) do %>
   BUY <input type="text" name="buy" placeholder="Amount">
   <input type="submit" value="Buy">

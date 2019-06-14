@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params
+    @user.funds = params[:user][:funds].to_i
+    @user.save()
 
     if @user.persisted?
       #log them in automatically

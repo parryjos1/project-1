@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'session#new'  
+  root 'session#new'
 
   resources :stocks
+  # resources :bitcoins
+
+  #get bitcoins
+  get "/users/:id/bitcoins" => "bitcoins#show", as: 'bitcoins_show'
+  post "/users/:id/bitcoins/:pricebcoin" => "bitcoins#create", as: 'bitcoins_create'
+  post "/users/:id/bitcoins/submit/:id" => "bitcoins#destroy", as: 'bitcoins_delete'
 
   # This is the stock API lookup results page
   # post "/portfolios/:id/shares/search" => "shares#search", as: 'shares_search'

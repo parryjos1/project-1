@@ -5,7 +5,7 @@
 
 <h3>
   <%= form_tag shares_search_path(@portfolio.id), method: 'get' do %>
-    <%= link_to "Your Portfolios", user_path %>
+    <%= link_to "Back to Dashboard", user_path %>
     |
     Add a stock: <input type="text" name="symbol" placeholder="Symbol">
     <input type="submit" value="Search">
