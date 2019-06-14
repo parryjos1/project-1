@@ -3,12 +3,14 @@
 </h3>
 
 <hr>
-<h2>This is the bitcoins page</h2>
 
-<h3>
+<h2>
   Current Price of Bitcoin ($USD):   <%= number_to_currency(@current_bitcoin_price) %>
-</h3>
+</h2>
 
+<div id="bitcoin_logo">
+<%= image_tag("bitcoin-logo.png",  alt: "bitcoin logo", :size => "150x150") %>
+</div>
 
 <h3>
 <%= form_tag bitcoins_create_path(params[:id], pricebcoin: @current_bitcoin_price) do %>

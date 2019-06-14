@@ -11,7 +11,7 @@
 
   <body>
 
-    <h1>Stock Brokerage Firm</h1>
+    <h1>Buffet Brokerage</h1>
 
     <nav>
   <% if @current_user.present? %>
@@ -21,6 +21,7 @@
       <%= link_to 'Login', login_path %>
     <% end %>
   </nav>
+  <br>
   <hr>
 
   <h2>
@@ -36,11 +37,12 @@
       Shares value: <%= number_to_currency(@current_user.all_assets[:stock_value]) %>
       |
       Bitcoins value: <%= number_to_currency(@current_user.all_assets[:bitcoin]) %>
-
+      <hr>
+      <br>
     <% end %>
+
   </h3>
-  <hr>
-  <br>
+
 
 
 
@@ -48,6 +50,6 @@
 
     <br>
     <hr>
-    <footer>&copy Stock Breaker Company</footer>
+    <footer>&copy The Buffet Brokerage Company</footer>
   </body>
 </html>

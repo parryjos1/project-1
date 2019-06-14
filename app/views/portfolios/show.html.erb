@@ -1,7 +1,5 @@
 
- <h3>Net worth: <%= number_to_currency(@current_user.funds + @portfolio_val) %></h3>
-
-<h3>Portfolio Valuation: <%= number_to_currency(@portfolio_val) %></h3>
+<h3>Total Value of This Portfolio: <%= number_to_currency(@portfolio_val) %></h3>
 
 <h3>
   <%= form_tag shares_search_path(@portfolio.id), method: 'get' do %>

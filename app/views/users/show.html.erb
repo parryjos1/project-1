@@ -5,12 +5,14 @@
   Deposit Funds: <input type="text" name="deposit" placeholder="Amount">
   <input type="submit" value="Deposit">
 <% end %>
-
+<br>
 <%= form_tag user_balance_path(@current_user.id, operator: '-') do %>
   Withdraw Funds: <input type="text" name="withdraw" placeholder="Amount">
   <input type="submit" value="Withdraw">
 <% end %>
-
+<br>
+<br>
+<hr>
 
 <h3>Create New Portfolio</h3>
 <%= link_to "Create New Portfolio", new_portfolio_path %>
@@ -30,6 +32,6 @@
 
 <hr>
 <br>
-<h2>
+<h1>
   <%= link_to "View Bitcoin Trading", bitcoins_show_path(@current_user.id) %>
-</h2>
+</h1>

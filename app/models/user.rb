@@ -26,8 +26,13 @@ class User < ApplicationRecord
     @current_bitcoin_price = response['bpi']['USD']['rate'].tr(',', '').to_f.round(2)
 
     #Get the current value of bitcoin the user has
-    user_bcoin = self.bitcoins
-    result[:bitcoin] = user_bcoin[0][:quantity] * @current_bitcoin_price
+    if self.bitcoins.present?
+      user_bcoin = self.bitcoins
+      result[:bitcoin] = user_bcoin[0][:quantity] * @current_bitcoin_price
+    else
+      result[:bitcoin] = 0
+    end
+
 
 
     result[:net_worth] = result[:bitcoin] + result[:stock_value] + self.funds
