@@ -44,6 +44,7 @@ class BitcoinsController < ApplicationController
       @bitcoin_id = user_bitcoins[0][:id]
       bitcoin_in_question = Bitcoin.find @bitcoin_id
       @bitcoin_return = (((@current_bitcoin_price / bitcoin_in_question[:price])-1)*100).round(2)
+      @user_id_sell = params[:id]
     end
 
 

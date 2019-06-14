@@ -25,7 +25,6 @@
 <!--  Sell Bitcoins-->
 <h3>
   <% if @user_bitcoin_qty.present? %>
-    <%= @user_id_sell = params[:id] %>
     <%= form_tag bitcoins_delete_path(@user_id_sell, @bitcoin_id) do %>
       SELL <input type="text" name="sell" placeholder="Amount">
       <input type="submit" value="Sell">

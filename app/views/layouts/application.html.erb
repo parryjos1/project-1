@@ -23,11 +23,25 @@
   </nav>
   <hr>
 
+  <h2>
+    <% if @current_user.present? %>
+      Net Worth: <%= number_to_currency(@current_user.all_assets[:net_worth]) %>
+    <% end %>
+  </h2>
+
   <h3>
     <% if @current_user.present? %>
       Cash Balance: <%= number_to_currency(@current_user.funds) %>
+      |
+      Shares value: <%= number_to_currency(@current_user.all_assets[:stock_value]) %>
+      |
+      Bitcoins value: <%= number_to_currency(@current_user.all_assets[:bitcoin]) %>
+
     <% end %>
   </h3>
+  <hr>
+  <br>
+
 
 
     <%= yield %>
