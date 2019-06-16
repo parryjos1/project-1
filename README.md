@@ -1,24 +1,13 @@
-# README
+# Share Market and Bitcoin Trading Website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Visit site here
 
-Things you may want to cover:
+[Buffet Brokerage](https://buffetbrokerage.herokuapp.com/)
 
-* Ruby version
+### Description
 
-* System dependencies
+Create an account and search and buy any stock listed on the US Stock Exchange. Add Bitcoin to your account.
 
-* Configuration
+### Tech Used
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby on Rails, JavaScript, IEX Share API, CoinDesk Bitcoin API and Chart.js 
